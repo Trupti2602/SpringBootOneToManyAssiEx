@@ -73,7 +73,7 @@ public class StudentController {
 	@PostMapping("/add")
 	public ResponseEntity<Student> add(@RequestBody Student student) {
 		try {
-			return ResponseEntity.accepted().body(service.createStudent(student));
+			return new ResponseEntity<>(service.createStudent(student), HttpStatus.CREATED);
 		} catch (Exception ex) {
 			return ResponseEntity.internalServerError().build();
 		}
